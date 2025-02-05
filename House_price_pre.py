@@ -67,5 +67,10 @@ print("Random Forest Testing R² Score:", test_r2_rf)
 
 # Make predictions on new data
 new_house = np.array([[0.00632, 18.0, 2.31, 0, 0.538, 6.575, 65.2, 4.09, 1, 296.0, 15.3, 396.9, 4.98]])
-predicted_price = rf_model.predict(new_house)
+
+# Convert to a DataFrame with feature names
+new_house_df = pd.DataFrame(new_house, columns=X.columns)
+
+# Predict the price
+predicted_price = rf_model.predict(new_house_df)
 print("Predicted House Price:", predicted_price[0] * 1000)
